@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Stage 2') {
             steps {
-                sh 'exit 1 || true'
+                sh 'exit 1 || exit 0'
             }
         }
         stage('Stage 3') {
