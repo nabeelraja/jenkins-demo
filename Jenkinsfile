@@ -1,19 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage('1') {
+        stage('Stage 1') {
             steps {
                 sh 'exit 0'
             }
         }
-        stage('2') {
+        stage('Stage 2') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh "exit 1"
                 }
             }
         }
-        stage('3') {
+        stage('Stage 3') {
+            steps {
+                sh 'exit 0'
+            }
+        }
+        stage('Stage 4') {
             steps {
                 sh 'exit 0'
             }
