@@ -4,13 +4,12 @@ pipeline {
         stage('Stage 1') {
             steps {
                 sh 'exit 0'
+                echo 'Hello World!!'
             }
         }
         stage('Stage 2') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "exit 1"
-                }
+                sh 'exit 0'
             }
         }
         stage('Stage 3') {
