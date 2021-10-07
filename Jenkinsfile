@@ -1,25 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Stage 1') {
+        stage('Print Repo Name') {
             steps {
-                sh 'exit 0'
-                echo 'Hello World!!'
-            }
-        }
-        stage('Stage 2') {
-            steps {
-                sh 'exit 1 || exit 0'
-            }
-        }
-        stage('Stage 3') {
-            steps {
-                sh 'exit 0'
-            }
-        }
-        stage('Stage 4') {
-            steps {
-                sh 'exit 0'
+                withEnv(["GIT_REPO_NAME = $env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')"]) {
+                  sh "exit 0"
+                  echo $env.GIT_REPO_NAME
+                }
             }
         }
     }
