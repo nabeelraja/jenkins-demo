@@ -6,7 +6,7 @@ pipeline {
                 script{
                     env.GIT_REPO_NAME = $env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
                     sh "exit 0"
-                    echo $env.GIT_REPO_NAME
+                    echo "$env.GIT_REPO_NAME"
                 }
             }
         }
