@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Print Repo Name') {
             steps {
-                withEnv(["GIT_REPO_NAME = $env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')"]) {
+                withEnv(["GIT_REPO_NAME = $($env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1'))"]) {
                   sh "exit 0"
                   echo $env.GIT_REPO_NAME
                 }
