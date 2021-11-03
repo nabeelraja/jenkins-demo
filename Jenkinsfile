@@ -1,23 +1,29 @@
+import jenkins.*
+import jenkins.model.*
+
+
+def jobPattern = "*.*"
+
+def matchedJobs = Jenkins.instance.items.findAll {
+    job ->
+    job.name =~ /$jobPattern/
+}
+
 pipeline {
     agent any
     stages {
-        stage('Stage 1') {
+        stage('List all jobs') {
             steps {
+                echo "${matchedJobs}"
                 sh 'exit 0'
-                echo 'Hello World!!'
             }
         }
-        stage('Stage 2') {
-            steps {
-                sh 'exit 1 || exit 0'
-            }
-        }
-        stage('Stage 3') {
+        stage('Disable all jobs') {
             steps {
                 sh 'exit 0'
             }
         }
-        stage('Stage 4') {
+        stage('Enable all jobs') {
             steps {
                 sh 'exit 0'
             }
