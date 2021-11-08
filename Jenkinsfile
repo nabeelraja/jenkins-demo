@@ -7,8 +7,7 @@ import jenkins.model.*
     stage('List all jobs') {
       steps {
         script {
-          def jobs = Jenkins.instance.getAllItems(AbstractItem.class)
-          jobs.each {
+          Jenkins.instance.getAllItems(AbstractItem.class).each {
             job ->
               println job.fullName
           }
@@ -18,7 +17,7 @@ import jenkins.model.*
     stage('Disable all jobs') {
       steps {
         script {
-          jobs.each {
+          Jenkins.instance.getAllItems(AbstractItem.class).each {
             job ->
               job.doDisable()
           }
@@ -28,7 +27,7 @@ import jenkins.model.*
     stage('Enable all jobs') {
       steps {
         script {
-          jobs.each {
+          Jenkins.instance.getAllItems(AbstractItem.class).each {
             job ->
               job.doEnable()
           }
