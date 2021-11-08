@@ -1,17 +1,16 @@
 import jenkins.*
 import jenkins.model.*
 
-def jobs = Jenkins.instance.getAllItems(AbstractItem.class)
-
-pipeline {
+  pipeline {
     agent any
     stages {
     stage('List all jobs') {
       steps {
-          script {
+        script {
+          def jobs = Jenkins.instance.getAllItems(AbstractItem.class)
           jobs.each {
-            job -> 
-            println job.fullName
+            job ->
+              println job.fullName
           }
         }
       }
@@ -20,8 +19,8 @@ pipeline {
       steps {
         script {
           jobs.each {
-            job -> 
-            job.doDisable()
+            job ->
+              job.doDisable()
           }
         }
       }
@@ -30,8 +29,8 @@ pipeline {
       steps {
         script {
           jobs.each {
-            job -> 
-            job.doEnable()
+            job ->
+              job.doEnable()
           }
         }
       }
