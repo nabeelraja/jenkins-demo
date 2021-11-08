@@ -10,7 +10,7 @@ import jenkins.model.*
         script {
           Jenkins.instance.getAllItems(AbstractItem.class).each {
             job ->
-            if (job.fullName == "disable-jobs" || job.fullName == "mgmt-multiregion" ){
+            if (job.fullName ==~ "/disable-jobs\/?(.*)/gm"){
               println("Skipping: ${job.fullName}")
             } else {
               if (action == "disable") {
