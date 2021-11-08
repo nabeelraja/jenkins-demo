@@ -10,17 +10,17 @@ import jenkins.model.*
         script {
           Jenkins.instance.getAllItems(AbstractItem.class).each {
             job ->
-            if (job.name == "disable-jobs" || job.name == "mgmt-multiregion" ){
-              println("Skipping: ${job.name}")
+            if (job.fullName == "disable-jobs" || job.fullName == "mgmt-multiregion" ){
+              println("Skipping: ${job.fullName}")
             } else {
               if (action == "disable") {
-                println("Disabling: ${job.name}")
+                println("Disabling: ${job.fullName}")
                 job.doDisable()
               } else if (action == "enable") {
-                println("Enabling: ${job.name}")
+                println("Enabling: ${job.fullName}")
                 job.doEnable()
               } else {
-                println ("Do not perform any operation without an action selected: ${job.name}")
+                println ("Do not perform any operation without an action selected: ${job.fullName}")
               }
             }
           }
