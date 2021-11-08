@@ -22,7 +22,6 @@ import jenkins.model.*
             job ->
             if (job.name == "disable-jobs" || job.name == "mgmt-multiregion" ){
               println("Skipping: " + job.name)
-              continue
             } else {
               if (action == "disable") {
                 job.doDisable()
