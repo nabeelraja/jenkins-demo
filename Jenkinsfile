@@ -1,10 +1,10 @@
 import jenkins.*
 import jenkins.model.*
 
-  pipeline {
-    agent any
-    parameters { choice(name: 'action', choices: ['--select--', 'disable', 'enable'], description: 'Select an action to enable/disable all jobs in this jenkins instance') }
-    stages {
+pipeline {
+  agent any
+  parameters { choice(name: 'action', choices: ['--select--', 'disable', 'enable'], description: 'Select an action to enable/disable all jobs in this jenkins instance') }
+  stages {
     stage('Enable/Disable all jobs') {
       steps {
         script {
